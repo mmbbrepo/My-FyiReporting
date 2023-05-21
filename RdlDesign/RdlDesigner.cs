@@ -3841,18 +3841,7 @@ namespace fyiReporting.RdlDesign
             mc.Editor.DesignCtl._vScroll.Maximum = (int)(mc.Editor.DesignCtl._DrawPanel.VerticalMax * mc.Editor.DesignCtl._DrawPanel.SCALAY);
 
 
-
         }
-
-
-
-
-
-
-
-
-
-
 
     }
 
