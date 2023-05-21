@@ -1075,7 +1075,7 @@ namespace fyiReporting.RdlDesign
 			int sh = this.Height - _hScroll.Height;
 			if (sh > h || sh < 0)
 			{
-				_vScroll.Enabled = false;
+				_vScroll.Enabled = true;
 				if (_vScroll.Value != 0)
 				{
 					_vScroll.Value = 0;
@@ -1104,7 +1104,7 @@ namespace fyiReporting.RdlDesign
 			int sw = this.Width - _vScroll.Width;
 			if (sw > w)
 			{
-				_hScroll.Enabled = false;
+				_hScroll.Enabled = true;
 				if (_hScroll.Value != 0)
 				{
 					_hScroll.Value = 0;
