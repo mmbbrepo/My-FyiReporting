@@ -3795,6 +3795,11 @@ namespace fyiReporting.RdlDesign
             mc.Export(fyiReporting.RDL.OutputPresentationType.Excel2007);
             return;
         }
+
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            menuFileExit_Click(sender, e);
+        }
     }
 
     public class RdlIpcObject : MarshalByRefObject
