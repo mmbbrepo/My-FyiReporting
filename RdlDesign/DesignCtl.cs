@@ -103,11 +103,11 @@ namespace fyiReporting.RdlDesign
 			// Handle the controls
 			_vScroll = new VScrollBar();
 			_vScroll.Scroll += new ScrollEventHandler(this.VerticalScroll);
-			_vScroll.Enabled = false;
+			_vScroll.Enabled = true;
 
 			_hScroll = new HScrollBar();
 			_hScroll.Scroll += new ScrollEventHandler(this.HorizontalScroll);
-			_hScroll.Enabled = false;
+			_hScroll.Enabled = true;
 
 			_DrawPanel = new DesignXmlDraw();
 			_DrawPanel.Paint += new PaintEventHandler(this.DrawPanelPaint);
