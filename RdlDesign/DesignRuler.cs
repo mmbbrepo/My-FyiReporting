@@ -36,7 +36,7 @@ namespace fyiReporting.RdlDesign
 	/// <summary>
 	/// Control for providing a designer image of RDL.   Works directly off the RDL XML.
 	/// </summary>
-    internal class DesignRuler : UserControl, System.ComponentModel.ISupportInitialize
+    public class DesignRuler : UserControl, System.ComponentModel.ISupportInitialize
     {
         DesignCtl _Design = null;
         bool _Vertical = false;

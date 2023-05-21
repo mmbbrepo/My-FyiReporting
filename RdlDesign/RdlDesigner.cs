@@ -3800,6 +3800,60 @@ namespace fyiReporting.RdlDesign
         {
              menuFileExit_Click(sender, e);
         }
+
+        private void UserZoomControl1_ZoomChanged(object sender, UserZoomControl.CambiaValori e)
+        {
+
+            MDIChild mc = this.ActiveMdiChild as MDIChild;
+            if (mc == null)
+                return;
+
+            if (mc.Editor == null)
+            {
+                return;
+            }
+
+
+            mc.Editor.DesignCtl.SCALEX = e.ValoreZoom;
+            mc.Editor.DesignCtl.SCALEY = e.ValoreZoom;
+
+            mc.Editor.DesignCtl._DrawPanel.SCALAX = e.ValoreZoom;
+            mc.Editor.DesignCtl._DrawPanel.SCALAY = e.ValoreZoom;
+
+            // Applicare la scala anche alla dimensione del disegno
+
+            mc.Editor.DesignCtl._DrawPanel.rWidth = mc.Editor.DesignCtl._DrawPanel.rWidthBase * mc.Editor.DesignCtl._DrawPanel.SCALAX;
+
+
+
+
+            mc.Editor.DesignCtl._DrawPanel.Invalidate();
+
+
+            mc.Editor.DesignCtl.HorizontalScroll.Visible = true;
+            mc.Editor.DesignCtl.VerticalScroll.Visible = true;
+            mc.Editor.DesignCtl.VerticalScroll.Enabled = true;
+
+            mc.Editor.dcTopRuler.Invalidate();
+            mc.Editor.dcLeftRuler.Invalidate();
+            mc.Editor.DesignCtl._hScroll.Maximum = (int)mc.Editor.DesignCtl._DrawPanel.rWidth;
+
+            mc.Editor.DesignCtl._vScroll.Maximum = (int)(mc.Editor.DesignCtl._DrawPanel.VerticalMax * mc.Editor.DesignCtl._DrawPanel.SCALAY);
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
     }
 
     public class RdlIpcObject : MarshalByRefObject
@@ -3830,5 +3884,11 @@ namespace fyiReporting.RdlDesign
             return null;
         }
 
+
+
+
+       
+
     }
+
 }

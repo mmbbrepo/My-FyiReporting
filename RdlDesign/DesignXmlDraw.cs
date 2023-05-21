@@ -62,8 +62,9 @@ namespace fyiReporting.RdlDesign
 		const int BANDHEIGHT = 12;              // height of band (e.g. body, pageheader, pagefooter) in pts
 		const float LEFTGAP = 0f; // keep a gap on the left size of the screen
 		// Various page measurements that we keep
-		float rWidth, pHeight, pWidth;
-		float lMargin, rMargin, tMargin, bMargin;
+		public float rWidth, pHeight, pWidth;
+		public float rWidthBase;
+		public float lMargin, rMargin, tMargin, bMargin;
 		XmlNode bodyNode;
 		XmlNode phNode;
 		XmlNode pfNode;
@@ -1015,7 +1016,8 @@ namespace fyiReporting.RdlDesign
 						pfNode = xNodeLoop;
 						break;
 					case "Width":
-						rWidth = GetSize(xNodeLoop.InnerText);
+						rWidthBase = GetSize(xNodeLoop.InnerText);
+						rWidth = rWidthBase;
 						break;
 					case "PageHeight":
 						pHeight = GetSize(xNodeLoop.InnerText);

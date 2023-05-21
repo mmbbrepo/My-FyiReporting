@@ -119,15 +119,15 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataProviders\DataProviders.csproj">
-      <Project>{D9F4197F-52D2-49F0-8DAF-E2884733CF2D}</Project>
+      <Project>{d9f4197f-52d2-49f0-8daf-e2884733cf2d}</Project>
       <Name>DataProviders</Name>
     </ProjectReference>
     <ProjectReference Include="..\RdlCri\RdlCri.csproj">
-      <Project>{9C9ECACA-0DEB-4517-8CF1-02C3D3EB128E}</Project>
+      <Project>{9c9ecaca-0deb-4517-8cf1-02c3d3eb128e}</Project>
       <Name>RdlCri</Name>
     </ProjectReference>
     <ProjectReference Include="..\RdlEngine\RdlEngine.csproj">
-      <Project>{C97E91F4-B310-44E2-9B6C-96775395722D}</Project>
+      <Project>{c97e91f4-b310-44e2-9b6c-96775395722d}</Project>
       <Name>RdlEngine</Name>
     </ProjectReference>
   </ItemGroup>

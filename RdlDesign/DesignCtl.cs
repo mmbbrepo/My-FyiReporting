@@ -52,8 +52,8 @@ namespace fyiReporting.RdlDesign
         public event HeightEventHandler HeightChanged;
         bool _InPaint;						// to prevent recursively invoking paint
 		// Scrollbars
-		private VScrollBar _vScroll;
-		private HScrollBar _hScroll;
+		public VScrollBar _vScroll;
+		public HScrollBar _hScroll;
 		private float _DpiX;
 		private float _DpiY;
 		private XmlDocument _ReportDoc;		// the xml document we're editting
@@ -71,7 +71,7 @@ namespace fyiReporting.RdlDesign
 
         public DesignXmlDraw _DrawPanel;       // the main drawing panel
 
-        internal DesignRuler TopRuler;
+		public DesignRuler TopRuler;
 
 
         public float SCALEX = 1;
