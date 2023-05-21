@@ -69,7 +69,7 @@ namespace fyiReporting.RdlDesign
     /// designer.Show() 
     /// </code>
     /// </example>
-    public partial class RdlDesigner :  IMessageFilter
+    public partial class RdlDesigner : IMessageFilter
     {
         // The version should match what is set in program.cs
         static readonly string IpcFileName = string.Format("\\fyiIpcData{0}.txt", typeof(Program).Assembly.GetName().Version.ToString().Replace(".", ""));
@@ -103,9 +103,11 @@ namespace fyiReporting.RdlDesign
         // Tool bar  --- if you add to this list LOOK AT INIT TOOLBAR FIRST
         bool bSuppressChange = false;
         private Color _SaveExprBackColor = Color.LightGray;
-       
+
         private ToolStripButton ctlInsertCurrent = null;
         private ToolStripMenuItem ctlMenuInsertCurrent = null;
+
+        static string _MeasureUnit = "inches";
 
         private RdlDesigner()
         {
@@ -139,7 +141,7 @@ namespace fyiReporting.RdlDesign
         public void OpenFile(Uri filePath)
         {
             CreateMDIChild(filePath, null, false);
-            RecentFilesMenu();	
+            RecentFilesMenu();
         }
 
         /// <summary>
@@ -164,7 +166,7 @@ namespace fyiReporting.RdlDesign
             xmlDoc.Save(filePath.AbsolutePath);
 
             CreateMDIChild(filePath, null, false);
-            RecentFilesMenu();	
+            RecentFilesMenu();
         }
 
         // TODO: Event raise on file save (with path and name to saved file)
@@ -187,9 +189,9 @@ namespace fyiReporting.RdlDesign
             // Intialize the recent file menu
             RecentFilesMenu();
             propertiesWindowsToolStripMenuItem.Checked = _ShowProperties;
-            IsMdiContainer = true;  
+            IsMdiContainer = true;
 
-            
+
             Application.AddMessageFilter(this);
 
             this.MdiChildActivate += new EventHandler(RdlDesigner_MdiChildActivate);
@@ -198,9 +200,9 @@ namespace fyiReporting.RdlDesign
 
             InitToolbar();
 
-			//Build CustomItems insert menu
-			BuildCustomItemsInsertMenu(insertToolStripMenuItem);
-            
+            //Build CustomItems insert menu
+            BuildCustomItemsInsertMenu(insertToolStripMenuItem);
+
             // open up the current files if any
             if (_CurrentFiles != null && openPreviousSession == true)
             {
@@ -211,8 +213,8 @@ namespace fyiReporting.RdlDesign
                 _CurrentFiles = null;		// don't need this any longer
             }
 
-            DesignTabChanged(this, new EventArgs());		// force toolbar to get updated
-    
+            DesignTabChanged(this, new EventArgs());        // force toolbar to get updated
+
         }
         /// <summary>
         /// Handles mousewheel processing when window under mousewheel doesn't have focus
@@ -246,7 +248,7 @@ namespace fyiReporting.RdlDesign
         [DllImport("user32.dll")]
         private static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wp, IntPtr lp);
 #endif
-        
+
         private DockStyle GetPropertiesDockStyle(string l)
         {
             DockStyle ds;
@@ -267,11 +269,11 @@ namespace fyiReporting.RdlDesign
             InitToolbarFont();
             InitToolbarFontSize();
 
-           zoomToolStripComboBox1.Items.AddRange(StaticLists.ZoomList);
-                   
+            zoomToolStripComboBox1.Items.AddRange(StaticLists.ZoomList);
+
             System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(RdlDesigner));
 
-            
+
             mainTC.Visible = _ShowTabbedInterface;
             if (_ShowTabbedInterface)
             {   // When tabbed we force the mdi children to be maximized (on reset)
@@ -280,13 +282,13 @@ namespace fyiReporting.RdlDesign
                     mc.WindowState = FormWindowState.Maximized;
                 }
             }
-           
-           
+
+
             mainTB.Name = "mainTB";
-    
+
             //			mainTB.Size = new Size(440,20);
-      
-          
+
+
         }
         /// <summary>
         /// Handles right mouse button processing on current tab
@@ -315,7 +317,7 @@ namespace fyiReporting.RdlDesign
             if (current != tc.SelectedIndex)
                 return;             // didn't find the tab
 
-			ContextMenuTB.Show(tc, p);
+            ContextMenuTB.Show(tc, p);
         }
 
         void mainTB_SizeChanged(object sender, EventArgs e)
@@ -357,6 +359,12 @@ namespace fyiReporting.RdlDesign
 #endif
             }
         }
+
+        static internal string MeasureUnit
+        {
+            get { return _MeasureUnit; }
+        }
+
 
         internal int RecentFilesMax
         {

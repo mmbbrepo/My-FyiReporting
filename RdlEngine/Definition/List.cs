@@ -397,8 +397,8 @@ namespace fyiReporting.RDL
 				}
 				else
 				{	// need to process just whole group as a List entry
-					if (ge.Group.PageBreakAtStart && !p.IsEmpty())
-						p = RunPageNew(pgs, p);
+                        if (ge.Group.PageBreakAtStart && ge.Group.PageBreakCondition(rpt, wc.Data.Data[ge.StartRow], ge.Group.PageBreakAtStart) && !p.IsEmpty())
+                            p = RunPageNew(pgs, p);
 
 					// pass the first row of the group
 					row = wc.Data.Data[ge.StartRow];
