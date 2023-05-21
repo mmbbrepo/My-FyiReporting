@@ -1885,14 +1885,14 @@
               <PageBreakAtStart>true</PageBreakAtStart>
               <PageBreakAtEnd>false</PageBreakAtEnd>
               <GroupExpressions>
-                <GroupExpression>={TIPOCOLONNA}</GroupExpression>
+                <GroupExpression >={TIPOCOLONNA}</GroupExpression>
               </GroupExpressions>
               <PageBreakCondition>=Iif({TIPOCOLONNA}&lt;&gt;3,false,true)</PageBreakCondition>
             </Grouping>
           </TableGroup>
           <TableGroup>
             <Grouping Name="GPIANIF">
-              <PageBreakAtStart>false</PageBreakAtStart>
+              <PageBreakAtStart>true</PageBreakAtStart>
               <PageBreakAtEnd>false</PageBreakAtEnd>
               <GroupExpressions>
                 <GroupExpression>={GPIANIF}</GroupExpression>
