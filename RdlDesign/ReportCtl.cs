@@ -64,10 +64,12 @@ namespace fyiReporting.RdlDesign
             XmlNode phNode = _Draw.GetCreateNamedChildNode(rNode, "PageHeader");
             this.chkPHFirst.Checked = _Draw.GetElementValue(phNode, "PrintOnFirstPage", "true").ToLower() == "true" ? true : false;
             this.chkPHLast.Checked = _Draw.GetElementValue(phNode, "PrintOnLastPage", "true").ToLower() == "true" ? true : false;
+            TxtHeaderHeight.Text = _Draw.GetElementValue(phNode, "Height", "1in");
             // Page footer settings
             XmlNode pfNode = _Draw.GetCreateNamedChildNode(rNode, "PageFooter");
             this.chkPFFirst.Checked = _Draw.GetElementValue(pfNode, "PrintOnFirstPage", "true").ToLower() == "true" ? true : false;
             this.chkPFLast.Checked = _Draw.GetElementValue(pfNode, "PrintOnLastPage", "true").ToLower() == "true" ? true : false;
+            TxtFooterHeight.Text = _Draw.GetElementValue(pfNode, "Height", "1in");
 
 
             PrinterSettings settings = new PrinterSettings();
@@ -130,6 +132,7 @@ namespace fyiReporting.RdlDesign
             _Draw.SetElement(rNode, "Description", tbReportDescription.Text);
             _Draw.SetElement(rNode, "PageWidth", tbPageWidth.Text);
             _Draw.SetElement(rNode, "PageHeight", tbPageHeight.Text);
+
             if (tbMarginLeft.Text.Trim().Length > 0)
                 _Draw.SetElement(rNode, "LeftMargin", tbMarginLeft.Text);
             else
@@ -150,11 +153,12 @@ namespace fyiReporting.RdlDesign
             XmlNode phNode = _Draw.GetCreateNamedChildNode(rNode, "PageHeader");
             _Draw.SetElement(phNode, "PrintOnFirstPage", this.chkPHFirst.Checked ? "true" : "false");
             _Draw.SetElement(phNode, "PrintOnLastPage", this.chkPHLast.Checked ? "true" : "false");
+            _Draw.SetElement(phNode, "Height", TxtHeaderHeight.Text);
             // Page footer settings
             XmlNode pfNode = _Draw.GetCreateNamedChildNode(rNode, "PageFooter");
             _Draw.SetElement(pfNode, "PrintOnFirstPage", this.chkPFFirst.Checked ? "true" : "false");
             _Draw.SetElement(pfNode, "PrintOnLastPage", this.chkPFLast.Checked ? "true" : "false");
-
+            _Draw.SetElement(pfNode, "Height", TxtFooterHeight.Text);
         }
 
         private void tbSize_Validating(object sender, System.ComponentModel.CancelEventArgs e)
