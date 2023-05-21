@@ -3798,7 +3798,7 @@ namespace fyiReporting.RdlDesign
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            menuFileExit_Click(sender, e);
+             menuFileExit_Click(sender, e);
         }
     }
 
