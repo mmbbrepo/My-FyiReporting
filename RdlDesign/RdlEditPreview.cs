@@ -84,7 +84,7 @@ namespace fyiReporting.RdlDesign
             dcTopRuler = new DesignRuler();
             dcLeftRuler = new DesignRuler();
             dcLeftRuler.Vertical = true;    // need to set before setting  Design property
-            dcDesign = new DesignCtl();
+            dcDesign = new DesignCtl(dcTopRuler);
             dcTopRuler.Design = dcDesign;   // associate rulers with design ctl
             dcLeftRuler.Design = dcDesign;
 

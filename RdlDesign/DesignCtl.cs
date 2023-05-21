@@ -69,10 +69,18 @@ namespace fyiReporting.RdlDesign
 		private bool _bHaveMouse;			// flag indicates we're rubber banding
 		private bool _AdjustScroll = false;	// when adjusting band height we may need to adjust scroll bars
 
-		private DesignXmlDraw _DrawPanel;		// the main drawing panel
+        public DesignXmlDraw _DrawPanel;       // the main drawing panel
 
-		public DesignCtl()
+        internal DesignRuler TopRuler;
+
+
+        public float SCALEX = 1;
+        public float SCALEY = 1;
+
+
+        public DesignCtl(DesignRuler X)
 		{
+			TopRuler = X;
 			InitializeComponent();
 			// Get our graphics DPI					   
 			Graphics g = null;			
@@ -984,6 +992,10 @@ namespace fyiReporting.RdlDesign
 			}
 
 			Graphics g = e.Graphics;
+			//
+			// Fix Page Units as point
+			//
+			g.PageUnit = GraphicsUnit.Point;
 
 			try			// never want to die in here
 			{
@@ -1137,8 +1149,10 @@ namespace fyiReporting.RdlDesign
                 VerticalScrollChanged(this, new EventArgs());
 		}
 
-		private void DrawPanelMouseUp(object sender, MouseEventArgs e)
+		private void DrawPanelMouseUp(object sender, MouseEventArgs E)
 		{
+			MouseEventArgsE e=new MouseEventArgsE(E,SCALEX,SCALEY);
+
 			if (e.Button == MouseButtons.Left)
 				_Undo.EndUndoGroup(true);
 
@@ -1486,8 +1500,10 @@ namespace fyiReporting.RdlDesign
 			DrawPanelSetCursor(b, hle);
 		}
 
-		private void DrawPanelMouseDown(object sender, MouseEventArgs e)
+		private void DrawPanelMouseDown(object sender, MouseEventArgs E)
 		{
+			MouseEventArgsE e = new MouseEventArgsE(E,SCALEX,SCALEY);
+
             bool baseOnly = false; //Josh: Added so base form can be force selected for inserting/selecting
             //Hold shift to select the base form instead of the control the mouse is over.
             if ((Control.ModifierKeys & Keys.Shift) == Keys.Shift)
@@ -1544,7 +1560,7 @@ namespace fyiReporting.RdlDesign
             SelectionChanged(this, new EventArgs());
         }
 
-		private bool DrawPanelMouseDownRubberBand(object sender, MouseEventArgs e)
+		private bool DrawPanelMouseDownRubberBand(object sender, MouseEventArgsE e)
 		{
 			if (_MouseDownLoc != HitLocationEnum.Inside)
 				return false;				// must hit inside a region
@@ -1600,7 +1616,7 @@ namespace fyiReporting.RdlDesign
 			return true;
 		}
 
-		private bool DrawPanelMouseDownTableColumnResize(object sender, MouseEventArgs e)
+		private bool DrawPanelMouseDownTableColumnResize(object sender, MouseEventArgsE e)
 		{
 			if (_MouseDownNode == null ||							
 				_MouseDownLoc != HitLocationEnum.TableColumnResize)
@@ -1609,7 +1625,7 @@ namespace fyiReporting.RdlDesign
 			return true;
 		}
 
-		private bool DrawPanelMouseDownTableRowResize(object sender, MouseEventArgs e)
+		private bool DrawPanelMouseDownTableRowResize(object sender, MouseEventArgsE e)
 		{
 			if (_MouseDownNode == null ||							
 				_MouseDownLoc != HitLocationEnum.TableRowResize)
@@ -1618,7 +1634,7 @@ namespace fyiReporting.RdlDesign
 			return true;
 		}
 
-		private bool DrawPanelMouseDownInsert(HitLocation hl, object sender, MouseEventArgs e)
+		private bool DrawPanelMouseDownInsert(HitLocation hl, object sender, MouseEventArgsE e)
 		{
 			if (!(_CurrentInsert != null &&		// should we be inserting?
 				_MouseDownNode != null &&			
@@ -3342,4 +3358,42 @@ namespace fyiReporting.RdlDesign
             get { return _height; }
         }
     }
+
+    /// <summary>
+    /// This class is used to pass Eventargs and Scale Factors to various entry points
+    /// </summary>
+
+    public class MouseEventArgsE : EventArgs
+    {
+        private MouseButtons button;
+        private int clicks;
+        private int x;
+        private int y;
+        private int delta;
+        private Point location;
+        private float scale;
+        public MouseButtons Button => button;
+        public int Clicks => clicks;
+        public int X => x;
+        public int Y => y;
+        public int Delta => delta;
+        public Point Location => location;
+
+        /// <summary>
+        /// Costruttore
+        /// </summary>
+        /// <param name="B"></param>
+        /// <param name="ScaleX"></param>
+        /// <param name="ScaleY"></param>
+        public MouseEventArgsE(MouseEventArgs B, float ScaleX, float ScaleY)
+        {
+            this.button = B.Button;
+            this.clicks = B.Clicks;
+            this.x = (int)(B.X / ScaleX);
+            this.y = (int)(B.Y / ScaleY);
+            this.location = new Point(x, y);
+            this.delta = B.Delta;
+        }
+    }
+
 }

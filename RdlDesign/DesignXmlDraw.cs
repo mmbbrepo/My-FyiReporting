@@ -42,9 +42,13 @@ namespace fyiReporting.RdlDesign
 	/// <summary>
 	/// Control for providing a designer image of RDL.   Works directly off the RDL XML.
 	/// </summary>
-	internal class DesignXmlDraw: UserControl
+	public class DesignXmlDraw: UserControl
 	{
-		static internal readonly float POINTSIZED = 72.27f;
+        public float SCALAX = 1;
+        public float SCALAY = 1;
+        public Boolean EnableDrawGriglia = false;
+
+        static internal readonly float POINTSIZED = 72.27f;
 		static internal readonly decimal POINTSIZEM = 72.27m;
         readonly Color BANDBORDERCOLOR = Color.DimGray; //Josh: added for Band Border
         readonly BorderStyleEnum BANDBORDERSTYLE = BorderStyleEnum.Solid; //Josh: Band Border Style
