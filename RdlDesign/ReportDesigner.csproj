@@ -388,6 +388,9 @@
       <DependentUpon>TableRowCtl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="tif.gif" />
+    <EmbeddedResource Include="UserZoomControl.resx">
+      <DependentUpon>UserZoomControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VisibilityCtl.ru-RU.resx">
       <DependentUpon>VisibilityCtl.cs</DependentUpon>
     </EmbeddedResource>
@@ -602,6 +605,12 @@
     <Compile Include="Syntax\ScintillaExprStyle.cs" />
     <Compile Include="Syntax\ScintillaSqlStyle.cs" />
     <Compile Include="Syntax\ScintillaXMLStyle.cs" />
+    <Compile Include="UserZoomControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserZoomControl.designer.cs">
+      <DependentUpon>UserZoomControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="VisibilityCtl.cs">
       <SubType>UserControl</SubType>
     </Compile>
