@@ -3823,14 +3823,9 @@ namespace fyiReporting.RdlDesign
             // Applicare la scala anche alla dimensione del disegno
 
             mc.Editor.DesignCtl._DrawPanel.rWidth = mc.Editor.DesignCtl._DrawPanel.rWidthBase * mc.Editor.DesignCtl._DrawPanel.SCALAX;
-
-
-
-
             mc.Editor.DesignCtl._DrawPanel.Invalidate();
-
-
             mc.Editor.DesignCtl.HorizontalScroll.Visible = true;
+            mc.Editor.DesignCtl.HorizontalScroll.Enabled = true;
             mc.Editor.DesignCtl.VerticalScroll.Visible = true;
             mc.Editor.DesignCtl.VerticalScroll.Enabled = true;
 
@@ -3843,6 +3838,20 @@ namespace fyiReporting.RdlDesign
 
         }
 
+        private void AlignmentGridEnable_CheckedChanged(object sender, EventArgs e)
+        {
+            MDIChild mc = this.ActiveMdiChild as MDIChild;
+            if (mc == null)
+                return;
+            if (mc.Editor == null)
+            {
+                return;
+            }
+            mc.Editor.DesignCtl._DrawPanel.EnableDrawGriglia = AlignmentGridEnable.Checked;
+            mc.Editor.DesignCtl._DrawPanel.Invalidate();
+            mc.Editor.dcTopRuler.Invalidate();
+            mc.Editor.dcLeftRuler.Invalidate();
+        }
     }
 
     public class RdlIpcObject : MarshalByRefObject

@@ -1350,13 +1350,16 @@ namespace fyiReporting.RdlDesign
 			}
 		}
 
-		private void DrawPanelMouseMove(object sender, MouseEventArgs e)
+		private void DrawPanelMouseMove(object sender, MouseEventArgs E)
 		{
+            MouseEventArgsE e = new MouseEventArgsE(E, SCALEX, SCALEY);
             XmlNode b=null;					
 			HitLocationEnum hle = HitLocationEnum.Inside;
-			Point newMousePosition = new Point(e.X, e.Y);
+            Point newMousePosition = new Point();
+            newMousePosition = e.Location;
 
-			if (_bHaveMouse)
+
+            if (_bHaveMouse)
 			{	// we're rubber banding
 				// If we drew previously; we'll draw again to remove old rectangle
 				if( this._ptRBLast.X != -1 )

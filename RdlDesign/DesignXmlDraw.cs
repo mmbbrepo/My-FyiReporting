@@ -964,7 +964,7 @@ namespace fyiReporting.RdlDesign
 			_vScroll = vScroll;
 
 			g.PageUnit = GraphicsUnit.Point;
-			g.ScaleTransform(1, 1);
+			g.ScaleTransform(SCALAX, SCALAY);
 
 			_clip = new RectangleF(PointsX(clipRectangle.X) + _hScroll, 
 				PointsY(clipRectangle.Y) + _vScroll, 
@@ -1076,7 +1076,12 @@ namespace fyiReporting.RdlDesign
 
 		private float DrawReportPrimaryRegions(XmlNode xNode, float xLoc, float yLoc, string title)
 		{
-			if (xNode == null)
+            RectangleF TempRect = new RectangleF();
+
+			Size SizeGridPoints = new Size(4,4);	
+
+
+            if (xNode == null)
 				return yLoc;
 
 			XmlNode items=null;
@@ -1122,8 +1127,35 @@ namespace fyiReporting.RdlDesign
 			b = new RectangleF(xLoc + lMargin, yLoc + 1, /*PointsX(Width)*/(pWidth - lMargin - rMargin) /*+ _hScroll*/, /*height*/ ((height > TotalPageHeight /* - yLoc*/) ? TotalPageHeight/* - yLoc*/ : height));//displayHeight > 0 ? displayHeight : 0);
             DrawBackground(b, si);
 
-			//Edge of paper
-			DrawLine(Color.Gray, BorderStyleEnum.Solid, 1, pWidth, yLoc + 1, pWidth, yLoc + height);
+
+            // La griglia e' disegnata sulla superficie di lavoro e deve tenere conto dei valori dello scroll
+            // perche' i valori dello scroll dei singoli items sono computati nelle varie routines che disegnano
+            // la linea o il background
+            //
+            if (EnableDrawGriglia == true)
+            {
+                TempRect = b;
+                // adjust coordinates for scrolling
+                TempRect.X -= _hScroll - 1;
+                TempRect.Y -= _vScroll - 1;
+                ControlPaint.DrawGrid(g, Rectangle.Round(TempRect), SizeGridPoints, Color.White);
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            //Edge of paper
+            DrawLine(Color.Gray, BorderStyleEnum.Solid, 1, pWidth, yLoc + 1, pWidth, yLoc + height);
             //End "Paper"
 
             // Josh:
