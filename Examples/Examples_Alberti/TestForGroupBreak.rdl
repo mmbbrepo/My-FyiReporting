@@ -39,6 +39,7 @@
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
       </Fields>
+      <fyi:Rows File="tbl_valori.xml" xmlns:fyi="http://www.fyireporting.com/schemas" />
     </DataSet>
   </DataSets>
   <PageHeader>
@@ -320,16 +321,17 @@
   </PageFooter>
   <DataElementName>Report</DataElementName>
   <DataElementStyle>AttributeNormal</DataElementStyle>
-  <DataSources>
+  <Code>public function add(x as string) as string
+	add = x + " addedde "
+end function</Code>
+  <DataSources >
     <DataSource Name="DS1">
       <ConnectionProperties>
         <DataProvider>OLEDB</DataProvider>
-        <ConnectString>PROVIDER=MSOLEDBSQL;Server=ASUS2\SQLEXPRESS;Trusted_Connection=yes;INITIAL CATALOG=TEST_GRIGLIA</ConnectString>
+        <ConnectString>
+        </ConnectString>
         <IntegratedSecurity>false</IntegratedSecurity>
       </ConnectionProperties>
     </DataSource>
   </DataSources>
-  <Code>public function add(x as string) as string
-	add = x + " addedde "
-end function</Code>
 </Report>
