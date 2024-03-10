@@ -20,24 +20,19 @@
    For additional information, email info@fyireporting.com or visit
    the website www.fyiReporting.com.
 */
+
 using System;
-using System.Xml;
-using System.Data;
 using System.Collections;
+using System.IO;
+using System.Net;
+using System.Reflection;
 #if !NETSTANDARD2_0
 using System.Web.Services;
 using System.Web.Services.Description;
 using System.Web.Services.Protocols;
 #endif
-using System.CodeDom;
-using System.CodeDom.Compiler;
-using System.Text;
-using System.Reflection;
-using System.IO;
-using System.Net;
-using Microsoft.CSharp;
 
-namespace fyiReporting.Data
+namespace SumoX.Report.DataProviders
 {
 	/// <summary>
 	/// WebServiceWsdl handles generation and caching of Assemblies containing WSDL proxies

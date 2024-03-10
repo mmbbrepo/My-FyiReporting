@@ -20,22 +20,18 @@
    For additional information, email info@fyireporting.com or visit
    the website www.fyiReporting.com.
 */
+
 using System;
-using System.Xml;
-using System.Xml.XPath;
-using System.Data;
 using System.Collections;
-using System.Collections.Specialized;
-using System.IO;
-using System.Net;
+using System.Data;
+using System.Reflection;
 #if !NETSTANDARD2_0
 using System.Web.Services;
 using System.Web.Services.Description;
 using System.Web.Services.Protocols;
 #endif
-using System.Reflection;
 
-namespace fyiReporting.Data
+namespace SumoX.Report.DataProviders
 {
 	/// <summary>
 	/// Summary description for Class1.

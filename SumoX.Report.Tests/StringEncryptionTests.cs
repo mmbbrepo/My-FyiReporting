@@ -1,6 +1,6 @@
 ﻿using System;
-using EncryptionProvider.String;
 using NUnit.Framework;
+using SumoX.Report.EncryptionProvider.String;
 
 namespace ReportTests
 {

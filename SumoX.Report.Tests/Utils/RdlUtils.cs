@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using fyiReporting.RDL;
+using SumoX.Report.Engine.Definition;
+using SumoX.Report.Engine.Runtime;
 
 namespace ReportTests.Utils
 {

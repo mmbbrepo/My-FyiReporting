@@ -20,15 +20,15 @@
    For additional information, email info@fyireporting.com or visit
    the website www.fyiReporting.com.
 */
+
 using System;
-using System.Xml;
-using System.Xml.XPath;
-using System.Data;
 using System.Collections;
 using System.Collections.Specialized;
-using System.Collections.Generic;
+using System.Data;
+using System.Xml;
+using System.Xml.XPath;
 
-namespace fyiReporting.Data
+namespace SumoX.Report.DataProviders
 {
 	/// <summary>
     /// Summary description for iTunesDataReader.

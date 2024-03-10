@@ -21,10 +21,9 @@
    the website www.fyiReporting.com.
 */
 
-using System;
 using System.Collections;
 
-namespace fyiReporting.Data
+namespace SumoX.Report.DataProviders
 {
 	/// <summary>
 	/// Represents a list of the tokens.

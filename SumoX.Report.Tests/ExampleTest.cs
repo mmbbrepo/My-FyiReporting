@@ -1,5 +1,6 @@
 using System;
 using NUnit.Framework;
+using SumoX.Report.DataProviders;
 
 namespace ReportTests
 {
@@ -10,7 +11,7 @@ namespace ReportTests
 		public void Test1()
 		{
 
-			var conn = new fyiReporting.Data.XmlConnection("RdlEngineconfig.Linux.xml");
+			var conn = new XmlConnection("RdlEngineconfig.Linux.xml");
 			Assert.True(conn.Database == null);
 
 		}
