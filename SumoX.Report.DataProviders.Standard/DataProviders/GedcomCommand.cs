@@ -20,12 +20,11 @@
    For additional information, email info@fyireporting.com or visit
    the website www.fyiReporting.com.
 */
-using System;
-using System.Xml;
-using System.Data;
-using System.Collections;
 
-namespace fyiReporting.Data
+using System;
+using System.Data;
+
+namespace SumoX.Report.DataProviders
 {
 	/// <summary>
 	/// LogCommand allows specifying the command for the web log.

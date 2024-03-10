@@ -19,11 +19,12 @@
 
    For additional information, email info@fyireporting.com or visit
    the website www.fyiReporting.com.
- */ 
+ */
+
 using System;
 using System.IO;
 
-namespace fyiReporting.Data
+namespace SumoX.Report.DataProviders
 {
 	/// <summary>
 	/// char reader simply reads entire file into a string and processes.

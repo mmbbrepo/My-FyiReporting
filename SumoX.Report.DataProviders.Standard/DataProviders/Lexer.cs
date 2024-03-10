@@ -20,12 +20,12 @@
    For additional information, email info@fyireporting.com or visit
    the website www.fyiReporting.com.
 */
+
 using System;
 using System.IO;
-using System.Collections;
 using System.Text;
 
-namespace fyiReporting.Data
+namespace SumoX.Report.DataProviders
 {
 	/// <summary>
 	/// A simple Lexer that is used by Parser.

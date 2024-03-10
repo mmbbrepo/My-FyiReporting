@@ -20,14 +20,13 @@
    For additional information, email info@fyireporting.com or visit
    the website www.fyiReporting.com.
 */
+
 using System;
 using System.Data;
-using System.Collections;
-using System.Collections.Specialized;
 using System.IO;
 using System.Net;
 
-namespace fyiReporting.Data
+namespace SumoX.Report.DataProviders
 {
 	/// <summary>
 	/// TxtDataReader handles reading txt files

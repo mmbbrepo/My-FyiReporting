@@ -20,14 +20,13 @@
    For additional information, email info@fyireporting.com or visit
    the website www.fyiReporting.com.
 */
-using System;
-using System.Data;
-using System.Collections;
-using System.Collections.Specialized;
-using System.IO;
-using System.Net;
 
-namespace fyiReporting.Data
+using System;
+using System.Collections;
+using System.Data;
+using System.IO;
+
+namespace SumoX.Report.DataProviders
 {
 	/// <summary>
 	/// LogDataReader handles reading log files

@@ -6,9 +6,10 @@ using System.Linq;
 using System.Text;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Validation;
-using fyiReporting.RDL;
 using NUnit.Framework;
 using ReportTests.Utils;
+using SumoX.Report.Engine.Render;
+using SumoX.Report.Engine.Runtime;
 
 namespace ReportTests
 {
