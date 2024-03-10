@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6C0DF560-B9A9-45C0-A814-9D3F04BC68D6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>SumoX.Report.Tests.Android</RootNamespace>
+    <AssemblyName>SumoX.Report.Tests.Android</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="NUnit" Version="3.12.0" />
+    <PackageReference Include="Xamarin.UITest" Version="3.2.2" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.13.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SumoX.Report.Cri.Standard\SumoX.Report.Cri.Standard.csproj">
+      <Project>{d9e0105a-4adb-4d48-9a55-d5bf9a0a3720}</Project>
+      <Name>SumoX.Report.Cri.Standard</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SumoX.Report.DataProviders.Standard\SumoX.Report.DataProviders.Standard.csproj">
+      <Project>{3f2ef3d7-24e9-431b-8af8-5ef453c3f5da}</Project>
+      <Name>SumoX.Report.DataProviders.Standard</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SumoX.Report.EncryptionProvider.Standard\SumoX.Report.EncryptionProvider.Standard.csproj">
+      <Project>{91d7b6a9-6415-4e62-81eb-08a372cb85c2}</Project>
+      <Name>SumoX.Report.EncryptionProvider.Standard</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SumoX.Report.Engine.Standard\SumoX.Report.Engine.Standard.csproj">
+      <Project>{1b8d2139-3e5e-489c-8176-382d4948c88e}</Project>
+      <Name>SumoX.Report.Engine.Standard</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Tests.cs" />
+    <Compile Include="AppInitializer.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

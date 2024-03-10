@@ -16,7 +16,6 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\DataProviders.Core\DataProviders.Core.csproj" />
     <ProjectReference Include="..\RdlCri.Core\RdlCri.Core.csproj" />
     <ProjectReference Include="..\RdlEngine.Core\RdlEngine.Core.csproj" />
   </ItemGroup>
